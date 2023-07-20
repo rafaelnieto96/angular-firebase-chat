@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { updateProfile } from '@firebase/auth';
 import { BehaviorSubject, forkJoin, from, pluck, switchMap } from 'rxjs';
-import { SigninCredentials, SignupCredentials } from './auth.model';
+import { SignupCredentials } from './auth.model';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
 export class AuthService {
 
   private authState = new BehaviorSubject<Object | null>(null);
-  
+
   readonly isLoggedIn$ = authState(this.auth);
 
   constructor(private auth: Auth, private http: HttpClient) { }
@@ -33,13 +33,8 @@ export class AuthService {
 
   signUp({ email, password, displayName }: SignupCredentials) {
     return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
-      switchMap(({ user }) => forkJoin([
-        updateProfile(user, { displayName }),
-        this.http.post(
-          `${environment.apiUrl}/createStreamUser`, 
-          { user: {...user, displayName } })
-      ])),
-    );
+      switchMap(({ user }) => updateProfile(user, { displayName }),
+    ));
   }
 
   signOut() {

@@ -1,8 +1,7 @@
-export interface SigninCredentials {
+export interface SignupCredentials {
     email: string;
+    displayName: string;
     password: string;
 }
 
-export interface SignupCredentials extends SigninCredentials {
-    displayName: string;
-}
+

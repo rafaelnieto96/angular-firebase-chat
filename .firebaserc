@@ -6,9 +6,16 @@
           "get-stream-io-decoded"
         ]
       }
+    },
+    "firebasechatproject": {
+      "hosting": {
+        "getstream-chat-angular-example": [
+          "fir-chatproject-3b98a"
+        ]
+      }
     }
   },
   "projects": {
-    "default": "get-stream-io-decoded"
+    "default": "firebasechatproject"
   }
 }

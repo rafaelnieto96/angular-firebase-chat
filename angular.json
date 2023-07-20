@@ -107,11 +107,8 @@
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {
-            "prerender": false,
-            "ssr": false,
-            "browserTarget": "getstream-chat-angular-example:build:production",
-            "firebaseProject": "get-stream-io-decoded",
-            "firebaseHostingSite": "get-stream-io-decoded"
+            "version": 2,
+            "browserTarget": "getstream-chat-angular-example:build:production"
           }
         }
       }
